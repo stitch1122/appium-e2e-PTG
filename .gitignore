@@ -1,0 +1,16 @@
+#All strange files
+.DS_Store
+
+# IDEA Settings
+.idea
+
+# Log file
+*.log
+
+# BlueJ files
+*.ctxt
+
+# Different logs
+target
+
+PTG.iml

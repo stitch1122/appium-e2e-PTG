@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Regression Testing Suite">
+    <groups>
+        <run>
+            <include name="regression"/>
+        </run>
+    </groups>
+    <listeners>
+        <listener class-name="configs.Listener"/>
+    </listeners>
+    <test name="regression">
+        <packages>
+            <package name="android.tests"/>
+        </packages>
+    </test>
+</suite>
