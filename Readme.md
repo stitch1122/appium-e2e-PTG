@@ -79,7 +79,6 @@ Then select __clean, validate, compile, test__ options, and click on __Run Maven
 ##### There are a few ways to run your tests:
 
 Open ````src/test/java/android/tests/AuthenticationTest````, right click, Run AuthenticationTest
-![Run tests](img1.png)
 
 Open ````srs/test/java/resources/testng.xml```` file and run it
 
