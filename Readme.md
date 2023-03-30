@@ -72,14 +72,14 @@ git clone https://github.com/groznyj1530/appium-e2e-PTG.git
 5. Build project
 You can use Maven Build Panel of IntelliJ IDEA. To open it, select ````View -> Tool Windows -> Maven```` in Mac Menu Bar.
 Then select __clean, validate, compile, test__ options, and click on __Run Maven Build__ button
-![Build projects](img2.jpg)
+![Build projects](img2.png)
 
 5. Run tests
 *******
 ##### There are a few ways to run your tests:
 
 Open ````src/test/java/android/tests/AuthenticationTest````, right click, Run AuthenticationTest
-![Run tests](img1.jpg)
+![Run tests](img1.png)
 
 Open ````srs/test/java/resources/testng.xml```` file and run it
 
