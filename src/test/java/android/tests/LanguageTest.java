@@ -3,21 +3,21 @@ package android.tests;
 import android.pages.MenuSection;
 import android.pages.SettingsPage;
 import io.appium.java_client.android.AndroidDriver;
-import org.junit.jupiter.api.Assertions;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class LanguageTest extends BaseTest {
 
     @Test(description = "Change language")
     public void shouldChangeLanguageSuccessfully() throws InterruptedException {
-        MenuSection menu = new MenuSection((AndroidDriver) driver);
+        MenuSection menu = new MenuSection(driver);
         menu.openSettings();
 
-        SettingsPage settings = new SettingsPage((AndroidDriver) driver);
+        SettingsPage settings = new SettingsPage(driver);
         settings.chooseLanguageBelarusian();
-        Assertions.assertDoesNotThrow(settings::validateBelarusianLanguage);
+        Assert.assertTrue(settings.isBelarusianLanguage(), "Not Belarusian");
 
         settings.chooseLanguageEnglish();
-        Assertions.assertDoesNotThrow(settings::validateEnglishLanguage);
+        Assert.assertTrue(settings.isEnglishLanguage(), "Not English");
     }
 }

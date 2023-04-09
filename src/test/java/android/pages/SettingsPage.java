@@ -1,7 +1,8 @@
 package android.pages;
 
+import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.MobileElement;
 import io.appium.java_client.TouchAction;
-import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.touch.WaitOptions;
 import io.appium.java_client.touch.offset.PointOption;
@@ -11,31 +12,31 @@ import org.openqa.selenium.WebElement;
 import java.time.Duration;
 
 public class SettingsPage extends BasePage {
-    public SettingsPage(AndroidDriver driver) { this.driver = driver; }
+    public SettingsPage(AppiumDriver driver) { super(driver); }
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Language']")
-    private static WebElement itemLanguageEng;
+    private static MobileElement itemLanguageEng;
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Мова']")
-    private static WebElement itemLanguageBlr;
+    private static MobileElement itemLanguageBlr;
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Апавяшчэнні і гукі']")
-    private static WebElement itemNotificationBlr;
+    private static MobileElement itemNotificationBlr;
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Notifications and Sounds']")
-    private static WebElement itemNotificationEng;
+    private static MobileElement itemNotificationEng;
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Беларуская']")
-    private static WebElement langBelarusian;
+    private static MobileElement langBelarusian;
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='English']")
-    private static WebElement langEnglish;
+    private static MobileElement langEnglish;
 
     @AndroidFindBy(xpath = "//android.widget.ImageView[@content-desc=\"Go back\"]")
-    private static WebElement goBackEng;
+    private static MobileElement goBackEng;
 
     @AndroidFindBy(xpath = "//android.widget.ImageView[@content-desc=\"Перайсці назад\"]")
-    private static WebElement goBackBlr;
+    private static MobileElement goBackBlr;
 
     public void chooseLanguageBelarusian() throws InterruptedException {
         scroll();
@@ -53,21 +54,9 @@ public class SettingsPage extends BasePage {
         goBackBlr.click();
     }
 
-    private boolean isBelarusianLanguage() {return itemNotificationBlr.isDisplayed();}
+    public boolean isBelarusianLanguage() {return itemNotificationBlr.isDisplayed();}
 
-    public void validateBelarusianLanguage() {
-        if (!isBelarusianLanguage()) {
-            throw new PageValidationException("'Апавяшчэнні і гукі' text is absent");
-        }
-    }
-
-    private boolean isEnglishLanguage() {return itemNotificationEng.isDisplayed();}
-
-    public void validateEnglishLanguage () {
-        if (!isEnglishLanguage()) {
-            throw new PageValidationException("'Notifications and Sounds' text is absent");
-        }
-    }
+    public boolean isEnglishLanguage() {return itemNotificationEng.isDisplayed();}
 
     public void scroll() throws InterruptedException {
         Thread.sleep(2000);

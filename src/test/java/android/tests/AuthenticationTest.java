@@ -21,13 +21,13 @@ public class AuthenticationTest extends BaseTest {
 
     @Test(description = "Set authentication code")
     public void shouldSignInAccount() throws InterruptedException {
-        StartPage startPage = new StartPage((AndroidDriver) driver);
+        StartPage startPage = new StartPage(driver);
         startPage.putPhoneNumber();
 
         Thread.sleep(8000);
         //put your code
 
-        HeaderSection header = new HeaderSection((AndroidDriver) driver);
+        HeaderSection header = new HeaderSection(driver);
         Assert.assertTrue(header.isButtonOpenMenuDisplayed(), "Chat list doesn't display");
     }
 }

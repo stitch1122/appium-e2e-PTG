@@ -1,15 +1,25 @@
 package android.tests;
 
+import android.pages.BasePage;
 import configs.AppDriver;
-import org.openqa.selenium.WebDriver;
+import io.appium.java_client.AppiumDriver;
 import org.testng.annotations.*;
 
 @Listeners({configs.Listener.class})
 public class BaseTest {
-    protected WebDriver driver;
+    protected AppiumDriver driver;
+    protected BasePage page;
 
-    @BeforeMethod
+    @BeforeClass
     public void setUp() {
         driver =  AppDriver.getDriver();
+        page = new BasePage(driver);
+    }
+
+    @AfterClass
+    public void tearDown() {
+        if (driver != null) {
+            driver.quit();
+        }
     }
 }

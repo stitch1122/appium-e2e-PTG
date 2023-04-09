@@ -8,10 +8,10 @@ import org.testng.annotations.Test;
 public class PinCodeTest extends BaseTest {
     @Test(groups = "regression", description = "Enable Passcode")
     public void shouldPutVerificationCode() throws InterruptedException {
-        MenuSection menu = new MenuSection((AndroidDriver) driver);
+        MenuSection menu = new MenuSection(driver);
         menu.openSettings();
 
-        PrivacyPage privacy = new PrivacyPage((AndroidDriver) driver);
+        PrivacyPage privacy = new PrivacyPage(driver);
         privacy.switchOnPasscode();
     }
 }
