@@ -2,7 +2,6 @@ package android.tests;
 
 import android.pages.HeaderSection;
 import android.pages.StartPage;
-import io.appium.java_client.android.AndroidDriver;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;

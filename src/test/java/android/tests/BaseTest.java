@@ -13,13 +13,7 @@ public class BaseTest {
     @BeforeClass
     public void setUp() {
         driver =  AppDriver.getDriver();
+        driver.manage().logs().get("logcat").getAll();
         page = new BasePage(driver);
-    }
-
-    @AfterClass
-    public void tearDown() {
-        if (driver != null) {
-            driver.quit();
-        }
     }
 }

@@ -10,7 +10,9 @@ public class BasePage {
 
     public BasePage(AppiumDriver driver) {
         this.driver=driver;
+        //PageFactory.initElements(driver, this);
         PageFactory.initElements(new AppiumFieldDecorator(AppDriver.getDriver()), this);
+        //driver.manage().logs().get("logcat").getAll();
     }
 
     /*protected void click(MobileElement element) {

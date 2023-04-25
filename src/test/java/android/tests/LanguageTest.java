@@ -7,11 +7,13 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class LanguageTest extends BaseTest {
-
     @Test(description = "Change language")
     public void shouldChangeLanguageSuccessfully() throws InterruptedException {
+
         MenuSection menu = new MenuSection(driver);
         menu.openSettings();
+
+        System.out.println(driver);
 
         SettingsPage settings = new SettingsPage(driver);
         settings.chooseLanguageBelarusian();
