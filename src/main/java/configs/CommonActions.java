@@ -18,7 +18,7 @@ import java.net.URL;
 
 public class CommonActions {
 
-    private static final AppProperties appProperties = new AppProperties();
+    public static final AppProperties appProperties = new AppProperties();
     public static AppiumDriver<WebElement> driver;
 
     public static AppiumDriver<MobileElement> androidLaunchApp() throws MalformedURLException {

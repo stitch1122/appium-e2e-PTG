@@ -3,7 +3,6 @@ package configs;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
-
 import java.net.MalformedURLException;
 
 public class Listener implements ITestListener {
@@ -11,37 +10,16 @@ public class Listener implements ITestListener {
     private AppProperties appProperties = new AppProperties();
 
     @Override
-    public void onTestStart(ITestResult result) {
-
-    }
+    public void onTestStart(ITestResult result) {}
 
     @Override
-    public void onTestSuccess(ITestResult result) {
-        try {
-            tearDown();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-    }
+    public void onTestSuccess(ITestResult result) {}
 
     @Override
-    public void onTestFailure(ITestResult result) {
-        try {
-            tearDown();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-    }
+    public void onTestFailure(ITestResult result) {}
 
     @Override
-    public void onTestSkipped(ITestResult result) {
-        String testName = result.getName();
-        try {
-            tearDown();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-    }
+    public void onTestSkipped(ITestResult result) {}
 
     @Override
     public void onTestFailedButWithinSuccessPercentage(ITestResult result) {
@@ -53,7 +31,7 @@ public class Listener implements ITestListener {
         AppiumServer.startServer();
         if ("Android".equalsIgnoreCase(appProperties.getProperty("platform"))){
             try {
-                System.out.println("Create driver from Listener");
+                System.out.println("Create driver from Listeners onStart");
                 AppDriver.createAndroidDriver();
             } catch (MalformedURLException e) {
                 e.printStackTrace();
@@ -67,16 +45,11 @@ public class Listener implements ITestListener {
 
     @Override
     public void onFinish(ITestContext iTestContext) {
-        try {
-            tearDown();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+        if (AppDriver.getDriver() != null) {
+            System.out.println("tearDown from Listeners");
+            AppDriver.getDriver().quit();
         }
-    }
-
-    public void tearDown() throws InterruptedException {
-        AppDriver.getDriver().quit();
-        System.out.println("TearDown driver from Listener");
+        System.out.println("Appium Server stop from Listeners onFinish");
         AppiumServer.stopServer();
     }
 }

@@ -10,7 +10,7 @@ public class MenuSection extends BasePage {
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Settings']")
     private static MobileElement itemSettings;
 
-    public MenuSection(AppiumDriver driver) { super(driver); }
+    public MenuSection(AppiumDriver driver) { this.driver=driver; }
 
     public void openSettings() throws InterruptedException {
         Thread.sleep(2000);

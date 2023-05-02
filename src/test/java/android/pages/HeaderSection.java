@@ -12,7 +12,13 @@ public class HeaderSection extends BasePage{
     @AndroidFindBy(xpath = "//android.widget.ImageView[@content-desc=\"Открыть меню навигации\"]")
     private static MobileElement menuButtonRus;
 
-    public HeaderSection(AppiumDriver driver) { super(driver); }
+    @AndroidFindBy(xpath = "//android.widget.ImageView[@content-desc=\"Go back\"]")
+    private static MobileElement goBackEng;
+
+    @AndroidFindBy(xpath = "//android.widget.ImageView[@content-desc=\"Перайсці назад\"]")
+    private static MobileElement goBackBlr;
+
+    public HeaderSection(AppiumDriver driver) { this.driver=driver; }
 
     public boolean isButtonOpenMenuDisplayed() {
         return menuButtonEng.isDisplayed();
@@ -21,4 +27,8 @@ public class HeaderSection extends BasePage{
     public void openMenu(){
         menuButtonEng.click();
     }
+
+    public void goBack() {goBackEng.click();}
+
+    public void goBackBlr() {goBackBlr.click();}
 }

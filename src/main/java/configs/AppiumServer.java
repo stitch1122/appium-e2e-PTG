@@ -3,6 +3,8 @@ package configs;
 import io.appium.java_client.service.local.AppiumDriverLocalService;
 import io.appium.java_client.service.local.AppiumServiceBuilder;
 import io.appium.java_client.service.local.flags.GeneralServerFlag;
+
+import java.io.File;
 import java.net.InetAddress;
 import java.net.InetSocketAddress;
 import java.net.ServerSocket;
@@ -33,7 +35,8 @@ public class AppiumServer {
         AppiumServiceBuilder builder = new AppiumServiceBuilder();
         builder.withIPAddress("127.0.0.1")
                 .usingPort(4723)
-                .withArgument(GeneralServerFlag.LOCAL_TIMEZONE);
+                .withArgument(GeneralServerFlag.LOCAL_TIMEZONE)
+                .withLogFile(new File("appiumLog.txt"));
         server = AppiumDriverLocalService.buildService(builder);
     }
 

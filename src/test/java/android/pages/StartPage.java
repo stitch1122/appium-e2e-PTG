@@ -6,11 +6,10 @@ import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 
 public class StartPage extends BasePage {
 
-    public StartPage(AppiumDriver driver) { super(driver); }
+    public StartPage(AppiumDriver driver) { this.driver=driver; }
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Start Messaging\"]")
     private static MobileElement buttonStartMessaging;
@@ -36,11 +35,34 @@ public class StartPage extends BasePage {
     @AndroidFindBy(xpath = "//android.widget.FrameLayout[@content-desc=\"Done\"]")
     private MobileElement buttonDone;
 
+    @AndroidFindBy(id = "org.telegram.messenger.web:id/passcode_btn_1")
+    private static MobileElement passcodeBtn;
+
+    @AndroidFindBy(id = "org.telegram.messenger.web:id/passcode_btn_2")
+    private static MobileElement fakePasscodeBtn;
+
     public void putPhoneNumber() throws InterruptedException {
         putPhoneNumber(new User());
     }
 
+    public void putPinCode(){
+        //String pageSource = driver.getPageSource();
+        //System.out.println(pageSource);
+        passcodeBtn.click();
+        passcodeBtn.click();
+        passcodeBtn.click();
+        passcodeBtn.click();
+    }
+
+    public void putFakePinCode(){
+        fakePasscodeBtn.click();
+        fakePasscodeBtn.click();
+        fakePasscodeBtn.click();
+        fakePasscodeBtn.click();
+    }
+
     public void putPhoneNumber(User user) throws InterruptedException {
+        Thread.sleep(4000);
         buttonStartMessaging.click();
         acceptPermission();
         inputCountryCode.clear();
@@ -48,6 +70,7 @@ public class StartPage extends BasePage {
         inputPhoneNumber.clear();
         inputPhoneNumber.sendKeys(user.getPhone());
         buttonDone.click();
+        Thread.sleep(4000);
         acceptPermission();
     }
     public void acceptPermission(){

@@ -8,18 +8,7 @@ import org.openqa.selenium.support.PageFactory;
 public class BasePage {
     protected AppiumDriver driver;
 
-    public BasePage(AppiumDriver driver) {
-        this.driver=driver;
-        //PageFactory.initElements(driver, this);
+    public BasePage() {
         PageFactory.initElements(new AppiumFieldDecorator(AppDriver.getDriver()), this);
-        //driver.manage().logs().get("logcat").getAll();
     }
-
-    /*protected void click(MobileElement element) {
-        element.click();
-    }
-
-    protected void sendKeys(MobileElement element, String text) {
-        element.sendKeys(text);
-    }*/
 }

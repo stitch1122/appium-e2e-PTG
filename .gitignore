@@ -6,11 +6,14 @@
 
 # Log file
 *.log
+appiumLog.txt
 
 # BlueJ files
 *.ctxt
 
-# Different logs
+# Different
 target
-
+src/test/java/android/data/User.java
+src/main/java/resources/app.apk
+src/main/java/resources/.properties
 PTG.iml

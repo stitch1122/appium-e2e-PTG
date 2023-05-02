@@ -19,7 +19,6 @@ public class AppDriver {
 
     public static void createAndroidDriver() throws MalformedURLException {
         setDriver(CommonActions.androidLaunchApp());
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     }
 
     public static void createIOSDriver() {
