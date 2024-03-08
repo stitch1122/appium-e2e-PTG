@@ -14,11 +14,4 @@ public class BaseTest {
     public void setUp() {
         driver =  AppDriver.getDriver();
     }
-
-    @AfterMethod
-    public void stopActivity() {
-        System.out.println("Stop Activity from @AfterMethod BaseTest");
-        Activity activity = new Activity("org.telegram.messenger.web", "org.telegram.ui.LaunchActivity");
-        ((StartsActivity) driver).startActivity(activity);
-    }
 }

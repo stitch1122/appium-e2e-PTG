@@ -26,9 +26,6 @@ public class AuthenticationTest extends BaseTest {
         StartPage startPage = new StartPage(driver);
         startPage.putPhoneNumber();
 
-        Thread.sleep(8000);
-        //put your code manually
-
         HeaderSection header = new HeaderSection(driver);
         Assert.assertTrue(header.isButtonOpenMenuDisplayed(), "Chat list doesn't display");
     }

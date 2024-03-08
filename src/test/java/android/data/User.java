@@ -1,7 +1,7 @@
 package android.data;
 
 public class User {
-    private String code = "111";
+    private String code = "11";
     private String phone = "111111111";
 
     public void setCode(String code) {

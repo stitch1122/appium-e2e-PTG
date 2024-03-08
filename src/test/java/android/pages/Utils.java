@@ -23,4 +23,8 @@ public class Utils {
                 .moveTo(PointOption.point(middleOfX, endYCoordinate)).release().perform();
         Thread.sleep(2000);
     }
+    public static void getPageObject(AppiumDriver driver) {
+        String pageSource = driver.getPageSource();
+        System.out.println(pageSource);
+    }
 }

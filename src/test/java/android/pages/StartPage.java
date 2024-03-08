@@ -4,6 +4,8 @@ import android.data.User;
 import configs.AppDriver;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
+import io.appium.java_client.android.Activity;
+import io.appium.java_client.android.StartsActivity;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import org.openqa.selenium.By;
 
@@ -26,6 +28,9 @@ public class StartPage extends BasePage {
     @AndroidFindBy(id = "//android.widget.TextView[@text=\"DECLINE\"]")
     private static MobileElement mfaDecline;
 
+    @AndroidFindBy(id = "//android.widget.TextView[@text=\"Decline\"]")
+    private static MobileElement settingsDecline;
+
     @AndroidFindBy(xpath = "//android.widget.EditText[@content-desc=\"Phone number\"]")
     private MobileElement inputPhoneNumber;
 
@@ -43,6 +48,20 @@ public class StartPage extends BasePage {
 
     public void putPhoneNumber() throws InterruptedException {
         putPhoneNumber(new User());
+    }
+
+    public void open(String pinCode) throws InterruptedException {
+        Activity activity = new Activity("org.telegram.messenger.web", "org.telegram.ui.LaunchActivity");
+        ((StartsActivity) driver).startActivity(activity);
+        StartPage start = new StartPage(driver);
+        if(pinCode == "1111" || pinCode == "withPinCode") {
+            start.putPinCode();
+        }
+        else if(pinCode == "2222" || pinCode == "withFakePinCode"){
+            start.putFakePinCode();
+        }
+        MenuSection menu = new MenuSection(driver);
+        menu.openSettings();
     }
 
     public void putPinCode(){
@@ -64,6 +83,9 @@ public class StartPage extends BasePage {
     public void putPhoneNumber(User user) throws InterruptedException {
         Thread.sleep(4000);
         buttonStartMessaging.click();
+        Thread.sleep(4000);
+        acceptPermission();
+        Thread.sleep(4000);
         acceptPermission();
         inputCountryCode.clear();
         inputCountryCode.sendKeys(user.getCode());
@@ -72,6 +94,10 @@ public class StartPage extends BasePage {
         buttonDone.click();
         Thread.sleep(4000);
         acceptPermission();
+        Thread.sleep(15000);
+        //put your code manually
+        declineStrictPrivacySettings(); //It doesn't work and I don't  know why
+        decline2StepVerification();
     }
     public void acceptPermission(){
         try {
@@ -88,7 +114,7 @@ public class StartPage extends BasePage {
         }
     }
     public void decline2StepVerification() throws InterruptedException {
-        Thread.sleep(8000);
+        Thread.sleep(2000);
         try {
             mfaOk.click();
             mfaDecline.click();
@@ -104,6 +130,14 @@ public class StartPage extends BasePage {
         }
         catch (Exception e){
             System.out.println("Skip popup with updating version");
+        }
+    }
+    public void declineStrictPrivacySettings() throws InterruptedException {
+        try {
+            settingsDecline.click();
+        }
+        catch (Exception e){
+                System.out.println("Popup with privacy settings doesn't appear");
         }
     }
 }

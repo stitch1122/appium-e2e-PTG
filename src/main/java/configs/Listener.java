@@ -1,5 +1,7 @@
 package configs;
 
+import io.appium.java_client.android.Activity;
+import io.appium.java_client.android.StartsActivity;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
@@ -10,7 +12,9 @@ public class Listener implements ITestListener {
     private AppProperties appProperties = new AppProperties();
 
     @Override
-    public void onTestStart(ITestResult result) {}
+    public void onTestStart(ITestResult result) {
+
+    }
 
     @Override
     public void onTestSuccess(ITestResult result) {}

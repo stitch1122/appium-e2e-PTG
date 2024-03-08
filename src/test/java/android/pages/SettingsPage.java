@@ -13,6 +13,9 @@ public class SettingsPage extends BasePage {
 
     public SettingsPage(AppiumDriver driver) { this.driver=driver; }
 
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Privacy and Security']")
+    private static MobileElement itemPrivacyAndSecurity;
+
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Language']")
     private static MobileElement itemLanguageEng;
 
@@ -30,6 +33,8 @@ public class SettingsPage extends BasePage {
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='English']")
     private static MobileElement langEnglish;
+
+    public void openPrivacyAndSecurity () {itemPrivacyAndSecurity.click();}
 
     public void chooseLanguageBelarusian() throws InterruptedException {
         Utils.scroll(driver);
@@ -50,20 +55,6 @@ public class SettingsPage extends BasePage {
     public boolean isBelarusianLanguage() {return itemNotificationBlr.isDisplayed();}
 
     public boolean isEnglishLanguage() {return itemNotificationEng.isDisplayed();}
-
-    public void open(String pinCode) throws InterruptedException {
-        Activity activity = new Activity("org.telegram.messenger.web", "org.telegram.ui.LaunchActivity");
-        ((StartsActivity) driver).startActivity(activity);
-        StartPage start = new StartPage(driver);
-        if(pinCode == "1111" || pinCode == "withPinCode") {
-            start.putPinCode();
-        }
-        else if(pinCode == "2222" || pinCode == "withFakePinCode"){
-            start.putFakePinCode();
-        }
-        MenuSection menu = new MenuSection(driver);
-        menu.openSettings();
-    }
 
     public void checkVersionTGDisappear() throws InterruptedException {
         Utils.scroll(driver);
