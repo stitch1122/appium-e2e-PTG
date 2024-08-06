@@ -64,4 +64,22 @@ public class PartisanSettingsPage extends BasePage {
         HeaderSection header = new HeaderSection(driver);
         header.goBack();
     }
+
+    public void deactivateShowId() throws InterruptedException {
+        if (switchShowID.getAttribute("checked").equals("true")) {
+            switchShowID.click();
+            System.out.println("Переключатель включен, отключаем");
+        }
+        HeaderSection header = new HeaderSection(driver);
+        header.goBack();
+    }
+
+    public void activateShowId() throws InterruptedException{
+        if (!switchShowID.getAttribute("checked").equals("true")) {
+            switchShowID.click();
+            System.out.println("Переключатель отключен, включаем");
+        }
+        HeaderSection header = new HeaderSection(driver);
+        header.goBack();
+    }
 }

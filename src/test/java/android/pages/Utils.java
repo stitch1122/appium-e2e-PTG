@@ -27,4 +27,20 @@ public class Utils {
         String pageSource = driver.getPageSource();
         System.out.println(pageSource);
     }
+
+    public static void scrollUpOneItem(AppiumDriver driver) throws InterruptedException {
+        Thread.sleep(2000);
+        TouchAction action = new TouchAction(driver);
+        Dimension size = driver.manage().window().getSize();
+        int width = size.width;
+        int height = size.height;
+        int startXCoordinate = (int) (width /2);
+        int startYCoordinate = (int) (height /2);
+       // int endXCoordinate = (int) (height * .6);
+        int endYCoordinate = (int) (height * .6);
+        action.press(PointOption.point(startXCoordinate, startYCoordinate))
+                .waitAction(WaitOptions.waitOptions(Duration.ofSeconds(2)))
+                .moveTo(PointOption.point(startXCoordinate, endYCoordinate)).release().perform();
+        Thread.sleep(100);
+    }
 }

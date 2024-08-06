@@ -15,6 +15,10 @@ public class PinCodeTest extends BaseTest{
         menu.openSettings();
         privacy.switchOnPasscode();
         //passcodePage.setAutoLock();
+        passcodePage.setAutoLockOneSec();
+        Thread.sleep(2000);
+        passcodePage.enableShowContent();
+        Thread.sleep(4000);
         passcodePage.putFakePasscode();
         Thread.sleep(4000);
         Assert.assertTrue(fakePasscode.isFakePasscode1Displayed(), "Passcode was not created");
