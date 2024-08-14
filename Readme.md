@@ -74,7 +74,8 @@ You can use Maven Build Panel of IntelliJ IDEA. To open it, select ````View -> T
 Then select __clean, validate, compile, test__ options, and click on __Run Maven Build__ button
 ![Build projects](img2.png)
 
-5. Run tests
+6. Run tests
+#### Constants - fill in the constants!!!!!
 *******
 ##### There are a few ways to run your tests:
 

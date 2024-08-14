@@ -2,9 +2,13 @@ package android.pages;
 
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.TouchAction;
+import io.appium.java_client.android.AndroidTouchAction;
+import io.appium.java_client.touch.LongPressOptions;
 import io.appium.java_client.touch.WaitOptions;
+import io.appium.java_client.touch.offset.ElementOption;
 import io.appium.java_client.touch.offset.PointOption;
 import org.openqa.selenium.Dimension;
+import org.openqa.selenium.WebElement;
 
 import java.time.Duration;
 
@@ -42,5 +46,19 @@ public class Utils {
                 .waitAction(WaitOptions.waitOptions(Duration.ofSeconds(2)))
                 .moveTo(PointOption.point(startXCoordinate, endYCoordinate)).release().perform();
         Thread.sleep(100);
+    }
+
+    public static void tapItem(AppiumDriver driver) throws InterruptedException {
+        Thread.sleep(2000);
+        TouchAction action = new TouchAction(driver);
+        action.tap(PointOption.point(1100,1650)).perform();
+        Thread.sleep(100);
+    }
+
+    public static void longTap(AppiumDriver driver, WebElement element) {
+        AndroidTouchAction touch = new AndroidTouchAction (driver);
+        touch.longPress(LongPressOptions.longPressOptions()
+                .withElement (ElementOption.element (element)))
+                .perform ();
     }
 }

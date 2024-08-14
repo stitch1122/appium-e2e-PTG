@@ -1,48 +1,48 @@
 package android.tests;
-
 import android.pages.*;
 import configs.AppDriver;
 import io.appium.java_client.android.Activity;
 import io.appium.java_client.android.StartsActivity;
 import org.testng.annotations.Test;
 
-public class PSShowId extends BaseTest {
+public class PSShowIdMyAccount extends BaseTest {
+    String appPackage = Constants.APP_PACKAGE;
+
     @Test(groups = "partisan_settings", description = "Show ID is disabled")
-    public void accountIdIsNotDisplayed() throws InterruptedException {
-        StartPage start = new StartPage(driver);
-        SettingsPage settings = new SettingsPage(driver);
-        PrivacyAndSecurityPage privacy = new PrivacyAndSecurityPage(driver);
-        PartisanSettingsPage partisanSettings = new PartisanSettingsPage(driver);
-        Account account = new Account(driver);
-
-        start.putPinCode();
-        privacy.openPartisanSettings();
-        Thread.sleep(2000);
-        partisanSettings.deactivateShowId();
-        start.open("withPinCode");
-        account.checkIdDisappearMyAccount();
-        start.open("withFakePinCode");
-        account.checkIdDisappearMyAccount();
-    }
-
-    @Test(groups = "partisan_settings", description = "Show ID is enabled")
-    public void accountIdIsDisplayed() throws InterruptedException {
-        Activity activity = new Activity("org.telegram.messenger.web", "org.telegram.ui.LaunchActivity");
+    public void myAccountIdIsNotShown() throws InterruptedException {
+        Activity activity = new Activity(appPackage, "org.telegram.ui.LaunchActivity");
         ((StartsActivity) AppDriver.getDriver()).startActivity(activity);
 
         StartPage start = new StartPage(driver);
-        SettingsPage settings = new SettingsPage(driver);
         PrivacyAndSecurityPage privacy = new PrivacyAndSecurityPage(driver);
         PartisanSettingsPage partisanSettings = new PartisanSettingsPage(driver);
-        Account account = new Account(driver);
+        AccountPage myAccount = new AccountPage(driver);
+
+        start.putPinCode();
+        privacy.openPartisanSettings();
+        partisanSettings.deactivateShowId();
+        start.open("withPinCode");
+        myAccount.checkIdDisappearMyAccount();
+        start.open("withFakePinCode");
+        myAccount.checkIdDisappearMyAccount();
+    }
+
+    @Test(groups = "partisan_settings", description = "Show ID is enabled")
+    public void myAccountIdIsShown() throws InterruptedException {
+        Activity activity = new Activity(appPackage, "org.telegram.ui.LaunchActivity");
+        ((StartsActivity) AppDriver.getDriver()).startActivity(activity);
+
+        StartPage start = new StartPage(driver);
+        PrivacyAndSecurityPage privacy = new PrivacyAndSecurityPage(driver);
+        PartisanSettingsPage partisanSettings = new PartisanSettingsPage(driver);
+        AccountPage myAccount = new AccountPage(driver);
 
         start.putPinCode();
         privacy.openPartisanSettings();
         partisanSettings.activateShowId();
         start.open("withPinCode");
-        account.checkIdAppearMyAccount();
+        myAccount.checkIdAppearMyAccount();
         start.open("withFakePinCode");
-        account.checkIdDisappearMyAccount();
+        myAccount.checkIdDisappearMyAccount();
     }
-
 }

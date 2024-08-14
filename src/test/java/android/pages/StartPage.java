@@ -64,6 +64,18 @@ public class StartPage extends BasePage {
         menu.openSettings();
     }
 
+    public void enterPin(String pinCode) throws InterruptedException {
+        Activity activity = new Activity("org.telegram.messenger.web", "org.telegram.ui.LaunchActivity");
+        ((StartsActivity) driver).startActivity(activity);
+        StartPage start = new StartPage(driver);
+        if(pinCode == "1111" || pinCode == "withPinCode") {
+            start.putPinCode();
+        }
+        else if(pinCode == "2222" || pinCode == "withFakePinCode"){
+            start.putFakePinCode();
+        }
+    }
+
     public void putPinCode(){
         //String pageSource = driver.getPageSource();
         //System.out.println(pageSource);

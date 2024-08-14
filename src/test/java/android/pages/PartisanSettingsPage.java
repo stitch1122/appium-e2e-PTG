@@ -3,6 +3,11 @@ package android.pages;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.pagefactory.AndroidFindBy;
+import org.openqa.selenium.*;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.By;
+
 
 public class PartisanSettingsPage extends BasePage {
 
@@ -50,6 +55,9 @@ public class PartisanSettingsPage extends BasePage {
     @AndroidFindBy(xpath = "//android.widget.Switch[@content-desc=\"Additional Verified Badges\"]")
     private static MobileElement switchAdditionalVerifiedBadges;
 
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Reset']")
+    private static MobileElement resetAvatarBtn;
+
     public void deactivateShowVersion() throws InterruptedException {
         if (switchShowVersion.getAttribute("checked").equals("true")) {
             switchShowVersion.click();
@@ -82,4 +90,96 @@ public class PartisanSettingsPage extends BasePage {
         HeaderSection header = new HeaderSection(driver);
         header.goBack();
     }
+
+    public void deactivateShowAvatar() throws InterruptedException {
+        if (switchAvatarDisabling.getAttribute("checked").equals("true")) {
+            switchAvatarDisabling.click();
+            System.out.println("Переключатель включен, отключаем");
+            resetAvatarBtn.click();
+           // Utils.tapItem(driver);
+        }
+        HeaderSection header = new HeaderSection(driver);
+        header.goBack();
+    }
+    public void activateShowAvatar() throws InterruptedException{
+        if (!switchAvatarDisabling.getAttribute("checked").equals("true")) {
+            switchAvatarDisabling.click();
+            System.out.println("Переключатель отключен, включаем");
+        }
+        HeaderSection header = new HeaderSection(driver);
+        header.goBack();
+    }
+
+    public void deactivateChatRenaming() throws InterruptedException {
+        if (switchChatRenaming.getAttribute("checked").equals("true")) {
+            switchChatRenaming.click();
+            System.out.println("Переключатель включен, отключаем");
+        }
+        HeaderSection header = new HeaderSection(driver);
+        header.goBack();
+    }
+
+    public void activateChatRenaming() throws InterruptedException{
+        if (!switchChatRenaming.getAttribute("checked").equals("true")) {
+            switchChatRenaming.click();
+            System.out.println("Переключатель отключен, включаем");
+        }
+        HeaderSection header = new HeaderSection(driver);
+        header.goBack();
+    }
+
+    public void deactivateDeletingMyMessages() throws InterruptedException {
+        if (switchDeletingMyMessages.getAttribute("checked").equals("true")) {
+            switchDeletingMyMessages.click();
+            System.out.println("Переключатель включен, отключаем");
+        }
+        HeaderSection header = new HeaderSection(driver);
+        header.goBack();
+    }
+
+    public void activateDeletingMyMessages() throws InterruptedException{
+        if (!switchDeletingMyMessages.getAttribute("checked").equals("true")) {
+            switchDeletingMyMessages.click();
+            System.out.println("Переключатель отключен, включаем");
+        }
+        HeaderSection header = new HeaderSection(driver);
+        header.goBack();
+    }
+
+    public void deactivateDeletingAfterRead() throws InterruptedException {
+        if (switchDeletingAfterRead.getAttribute("checked").equals("true")) {
+            switchDeletingAfterRead.click();
+            System.out.println("Переключатель включен, отключаем");
+        }
+        HeaderSection header = new HeaderSection(driver);
+        header.goBack();
+    }
+
+    public void activateDeletingAfterRead() throws InterruptedException{
+        if (!switchDeletingAfterRead.getAttribute("checked").equals("true")) {
+            switchDeletingAfterRead.click();
+            System.out.println("Переключатель отключен, включаем");
+        }
+        HeaderSection header = new HeaderSection(driver);
+        header.goBack();
+    }
+
+    public void deactivateSavedChannels() throws InterruptedException {
+        if (switchSavedChannels.getAttribute("checked").equals("true")) {
+            switchSavedChannels.click();
+            System.out.println("Переключатель включен, отключаем");
+        }
+        HeaderSection header = new HeaderSection(driver);
+        header.goBack();
+    }
+
+    public void activateSavedChannels() throws InterruptedException{
+        if (!switchSavedChannels.getAttribute("checked").equals("true")) {
+            switchSavedChannels.click();
+            System.out.println("Переключатель отключен, включаем");
+        }
+        HeaderSection header = new HeaderSection(driver);
+        header.goBack();
+    }
+
 }

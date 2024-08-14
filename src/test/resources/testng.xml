@@ -3,7 +3,7 @@
 <suite name="Smoke Testing Suite">
     <groups>
         <run>
-            <exclude name="regression"/>
+            <exclude name="smoke"/>
         </run>
     </groups>
     <listeners>
@@ -15,3 +15,4 @@
         </packages>
     </test>
 </suite>
+

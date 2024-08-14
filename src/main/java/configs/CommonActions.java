@@ -36,7 +36,7 @@ public class CommonActions {
         capabilities.setCapability(MobileCapabilityType.UDID, appProperties.getProperty("deviceUDID"));
         capabilities.setCapability(MobileCapabilityType.NO_RESET, true);
         capabilities.setCapability(AndroidMobileCapabilityType.AUTO_GRANT_PERMISSIONS, true);
-        capabilities.setCapability(AndroidMobileCapabilityType.APP_PACKAGE, "org.telegram.messenger.web");
+        capabilities.setCapability(AndroidMobileCapabilityType.APP_PACKAGE, "org.telegram.messenger.web"); //"org.telegram.messenger"
         capabilities.setCapability(AndroidMobileCapabilityType.APP_ACTIVITY, "org.telegram.ui.LaunchActivity");
         try {
             return new AndroidDriver<>(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);

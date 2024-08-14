@@ -33,7 +33,7 @@ public class PasscodeLockPage extends BasePage {
     public void setAutoLock() throws InterruptedException {
         itemAutoLock.click();
         Utils.getPageObject(driver);
-        MobileElement recyclerView = (MobileElement) driver.findElement(By.className("androidx.recyclerview.widget.RecyclerView"));
+        MobileElement recyclerView = (MobileElement) driver.findElement(By.className("android.recyclerview.widget.RecyclerView"));
         int itemCount = recyclerView.findElements(By.className(/*"android.widget.SeekBar"*/"android.widget.LinearLayout")).size();
         recyclerView.findElementByLinkText("in 1 second").click();
         listIn1Second.click();

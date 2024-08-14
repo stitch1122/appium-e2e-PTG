@@ -4,7 +4,7 @@
     <groups>
         <run>
             <exclude name="smoke"/>
-            <exclude name="partisan_settings"/>
+            <exclude name="regression"/>
         </run>
     </groups>
     <listeners>

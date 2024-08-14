@@ -8,7 +8,7 @@ import org.openqa.selenium.WebElement;
 public class HeaderSection extends BasePage{
     @AndroidFindBy(xpath = "//android.widget.ImageView[@content-desc=\"Open navigation menu\"]")
     private static MobileElement menuButtonEng;
-
+    //android.widget.ImageView[@content-desc="Open navigation menu"]
     @AndroidFindBy(xpath = "//android.widget.ImageView[@content-desc=\"Открыть меню навигации\"]")
     private static MobileElement menuButtonRus;
 
