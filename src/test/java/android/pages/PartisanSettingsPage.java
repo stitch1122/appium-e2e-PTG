@@ -91,15 +91,38 @@ public class PartisanSettingsPage extends BasePage {
         header.goBack();
     }
 
-    public void deactivateShowAvatar() throws InterruptedException {
-        if (switchAvatarDisabling.getAttribute("checked").equals("true")) {
-            switchAvatarDisabling.click();
-            System.out.println("Переключатель включен, отключаем");
-            resetAvatarBtn.click();
-           // Utils.tapItem(driver);
+//    public void deactivateShowAvatar() throws InterruptedException {
+//        if (switchAvatarDisabling.getAttribute("checked").equals("true")) {
+//            switchAvatarDisabling.click();
+//            System.out.println("Переключатель включен, отключаем");
+//            resetAvatarBtn.click();
+//           // Utils.tapItem(driver);
+//        }
+//        HeaderSection header = new HeaderSection(driver);
+//        header.goBack();
+//    }
+    public void deactivateShowAvatar() {
+        try {
+            if (switchAvatarDisabling.getAttribute("checked").equals("true")) {
+                switchAvatarDisabling.click();
+                System.out.println("Переключатель включен, отключаем");
+                Thread.sleep(2000);
+
+                WebDriverWait wait = new WebDriverWait(driver, 10);
+                MobileElement resetAvatar = (MobileElement) wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//android.widget.TextView[@text='Reset']")));
+                resetAvatar.click();
+            }
+        } catch (NoSuchElementException e) {
+            System.out.println("Элемент 'Reset' не найден: " + e.getMessage());
+        } catch (WebDriverException e) {
+            System.out.println("Ошибка при сбросе аватара: " + e.getMessage());
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt(); // Восстанавливаем статус прерывания
+            System.out.println("Поток был прерван: " + e.getMessage());
+        } finally {
+            HeaderSection header = new HeaderSection(driver);
+            header.goBack();
         }
-        HeaderSection header = new HeaderSection(driver);
-        header.goBack();
     }
     public void activateShowAvatar() throws InterruptedException{
         if (!switchAvatarDisabling.getAttribute("checked").equals("true")) {
@@ -111,12 +134,28 @@ public class PartisanSettingsPage extends BasePage {
     }
 
     public void deactivateChatRenaming() throws InterruptedException {
-        if (switchChatRenaming.getAttribute("checked").equals("true")) {
-            switchChatRenaming.click();
-            System.out.println("Переключатель включен, отключаем");
+        try {
+            if (switchChatRenaming.getAttribute("checked").equals("true")) {
+                switchChatRenaming.click();
+                System.out.println("Переключатель включен, отключаем");
+                Thread.sleep(2000);
+
+                WebDriverWait wait = new WebDriverWait(driver, 10);
+                MobileElement reset = (MobileElement) wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//android.widget.TextView[@text='Reset']")));
+                reset.click();
+            }
+
+        } catch (NoSuchElementException e) {
+            System.out.println("Элемент 'Reset' не найден: " + e.getMessage());
+        } catch (WebDriverException e) {
+            System.out.println("Ошибка при сбросе названия: " + e.getMessage());
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt(); // Восстанавливаем статус прерывания
+            System.out.println("Поток был прерван: " + e.getMessage());
+        } finally {
+            HeaderSection header = new HeaderSection(driver);
+            header.goBack();
         }
-        HeaderSection header = new HeaderSection(driver);
-        header.goBack();
     }
 
     public void activateChatRenaming() throws InterruptedException{
@@ -165,18 +204,79 @@ public class PartisanSettingsPage extends BasePage {
     }
 
     public void deactivateSavedChannels() throws InterruptedException {
-        if (switchSavedChannels.getAttribute("checked").equals("true")) {
-            switchSavedChannels.click();
-            System.out.println("Переключатель включен, отключаем");
+        WebDriverWait wait = new WebDriverWait(driver, 10);
+        boolean switchFound = false;
+
+        while (!switchFound) {
+            try {
+                MobileElement switchElement = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//android.widget.Switch[@content-desc=\"React to Messages\"]")));
+                switchFound = true;
+                if (switchSavedChannels.getAttribute("checked").equals("true")) {
+                    switchSavedChannels.click();
+                    System.out.println("Переключатель включен, отключаем");
+                }
+            } catch (Exception e) {
+                Utils.scroll(driver);
+            }
         }
         HeaderSection header = new HeaderSection(driver);
         header.goBack();
     }
 
     public void activateSavedChannels() throws InterruptedException{
-        if (!switchSavedChannels.getAttribute("checked").equals("true")) {
-            switchSavedChannels.click();
-            System.out.println("Переключатель отключен, включаем");
+        WebDriverWait wait = new WebDriverWait(driver, 10);
+        boolean switchFound = false;
+
+        while (!switchFound) {
+            try {
+                MobileElement switchElement = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//android.widget.Switch[@content-desc=\"React to Messages\"]")));
+                switchFound = true;
+                if (!switchSavedChannels.getAttribute("checked").equals("true")) {
+                    switchSavedChannels.click();
+                    System.out.println("Переключатель отключен, включаем");
+                }
+            } catch (Exception e) {
+                Utils.scroll(driver);
+            }
+        }
+        HeaderSection header = new HeaderSection(driver);
+        header.goBack();
+    }
+
+    public void deactivateReactToMessages() throws InterruptedException {
+        WebDriverWait wait = new WebDriverWait(driver, 10);
+        boolean switchFound = false;
+
+        while (!switchFound) {
+            try {
+                MobileElement switchElement = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//android.widget.Switch[@content-desc=\"React to Messages\"]")));
+                switchFound = true;
+                if (switchReactToMessages.getAttribute("checked").equals("true")) {
+                    switchReactToMessages.click();
+                    System.out.println("Переключатель включен, отключаем");
+                    }
+            } catch (Exception e) {
+                Utils.scroll(driver);
+            }
+        }
+        HeaderSection header = new HeaderSection(driver);
+        header.goBack();
+    }
+    public void activateReactToMessages() throws InterruptedException {
+        WebDriverWait wait = new WebDriverWait(driver, 10);
+        boolean switchFound = false;
+
+        while (!switchFound) {
+            try {
+                MobileElement switchElement = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//android.widget.Switch[@content-desc=\"React to Messages\"]")));
+                switchFound = true;
+                if (!switchReactToMessages.getAttribute("checked").equals("true")) {
+                    switchReactToMessages.click();
+                    System.out.println("Переключатель отключен, включаем");
+                    }
+            } catch (Exception e) {
+                Utils.scroll(driver);
+            }
         }
         HeaderSection header = new HeaderSection(driver);
         header.goBack();

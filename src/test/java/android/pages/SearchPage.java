@@ -26,7 +26,7 @@ public class SearchPage extends BasePage {
         search.setValue(chatUrl);
         MobileElement chat = (MobileElement) wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//android.view.ViewGroup[@index='1']")));
         chat.click();
-        MobileElement chatInfo = (MobileElement) wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//android.widget.TextView[@index='1']")));
+        MobileElement chatInfo = (MobileElement) wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//android.widget.TextView[@index='3']")));
         chatInfo.click();
     }
 
@@ -41,7 +41,7 @@ public class SearchPage extends BasePage {
     }
     public void openMoreMenuChat() {
         WebDriverWait wait = new WebDriverWait(driver, 10);
-        MobileElement moreMenu = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//android.widget.ImageButton[@content-desc=\"More options\"]/android.widget.ImageView")));
+        MobileElement moreMenu = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//android.widget.ImageButton[@content-desc=\"More options\"]")));
         moreMenu.click();
     }
 
@@ -128,4 +128,25 @@ public class SearchPage extends BasePage {
             Assert.fail("Кнопка 'Удалить мои сообщения' не отображается - error");
         }
     }
+
+    public void checkSaveBtnDisappear() {
+        WebDriverWait wait = new WebDriverWait(driver, 15);
+        try {
+            wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@text='Save']")));
+            System.out.println("Кнопка 'Сохранить' не отображается - OK");
+        } catch (TimeoutException e) {
+            Assert.fail("Кнопка 'Сохранить' все еще отображается - error");
+        }
+    }
+    public void checkSaveBtnAppear() {
+        WebDriverWait wait = new WebDriverWait(driver, 15);
+        try {
+            wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@text='Save']")));
+            System.out.println("Кнопка 'Сохранить' отображается - OK");
+        } catch (TimeoutException e) {
+            Assert.fail("Кнопка 'Сохранить' не отображается - error");
+        }
+    }
+
+
 }
