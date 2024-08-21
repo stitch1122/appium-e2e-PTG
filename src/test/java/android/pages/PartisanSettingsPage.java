@@ -1,8 +1,12 @@
 package android.pages;
 
 import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.MobileBy;
 import io.appium.java_client.MobileElement;
+import io.appium.java_client.TouchAction;
+import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
+import io.appium.java_client.touch.offset.PointOption;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -109,8 +113,13 @@ public class PartisanSettingsPage extends BasePage {
                 Thread.sleep(2000);
 
                 WebDriverWait wait = new WebDriverWait(driver, 10);
-                MobileElement resetAvatar = (MobileElement) wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//android.widget.TextView[@text='Reset']")));
-                resetAvatar.click();
+                MobileElement resetAvatar = (MobileElement) wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//android.widget.TextView[@text='Reset' and @index = '2']")));
+                int x = resetAvatar.getCenter().getX();
+                int y = resetAvatar.getCenter().getY();
+                Thread.sleep(2000);
+                TouchAction action = new TouchAction(driver);
+                action.tap(PointOption.point(x,y)).perform();
+                Thread.sleep(2000);
             }
         } catch (NoSuchElementException e) {
             System.out.println("Элемент 'Reset' не найден: " + e.getMessage());
@@ -142,7 +151,10 @@ public class PartisanSettingsPage extends BasePage {
 
                 WebDriverWait wait = new WebDriverWait(driver, 10);
                 MobileElement reset = (MobileElement) wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//android.widget.TextView[@text='Reset']")));
-                reset.click();
+                //reset.click();
+                MobileElement el = (MobileElement) driver.findElement(MobileBy.AndroidUIAutomator("new UiSelector().text(\"Reset\")"));
+                el.click();
+
             }
 
         } catch (NoSuchElementException e) {
@@ -274,6 +286,123 @@ public class PartisanSettingsPage extends BasePage {
                     switchReactToMessages.click();
                     System.out.println("Переключатель отключен, включаем");
                     }
+            } catch (Exception e) {
+                Utils.scroll(driver);
+            }
+        }
+        HeaderSection header = new HeaderSection(driver);
+        header.goBack();
+    }
+
+    public void deactivateShowCallBtn() throws InterruptedException {
+        WebDriverWait wait = new WebDriverWait(driver, 10);
+        boolean switchFound = false;
+
+        while (!switchFound) {
+            try {
+                MobileElement switchElement = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//android.widget.Switch[@content-desc=\"Show Call Button\"]")));
+                switchFound = true;
+                if (switchShowCallButton.getAttribute("checked").equals("true")) {
+                    switchShowCallButton.click();
+                    System.out.println("Переключатель включен, отключаем");
+                }
+            } catch (Exception e) {
+                Utils.scroll(driver);
+            }
+        }
+        HeaderSection header = new HeaderSection(driver);
+        header.goBack();
+    }
+    public void activateShowCallBtn() throws InterruptedException {
+        WebDriverWait wait = new WebDriverWait(driver, 10);
+        boolean switchFound = false;
+
+        while (!switchFound) {
+            try {
+                MobileElement switchElement = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//android.widget.Switch[@content-desc=\"Show Call Button\"]")));
+                switchFound = true;
+                if (!switchShowCallButton.getAttribute("checked").equals("true")) {
+                    switchShowCallButton.click();
+                    System.out.println("Переключатель отключен, включаем");
+                }
+            } catch (Exception e) {
+                Utils.scroll(driver);
+            }
+        }
+        HeaderSection header = new HeaderSection(driver);
+        header.goBack();
+    }
+
+    public void activateDeleteDrafts() throws InterruptedException {
+        WebDriverWait wait = new WebDriverWait(driver, 10);
+        boolean switchFound = false;
+
+        while (!switchFound) {
+            try {
+                MobileElement switchElement = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//android.widget.Switch[@content-desc=\"Delete all drafts on screen lock\"]")));
+                switchFound = true;
+                if (!switchDeleteDrafts.getAttribute("checked").equals("true")) {
+                    switchDeleteDrafts.click();
+                    System.out.println("Переключатель отключен, включаем");
+                }
+            } catch (Exception e) {
+                Utils.scroll(driver);
+            }
+        }
+        HeaderSection header = new HeaderSection(driver);
+        header.goBack();
+    }
+    public void deactivateDeleteDrafts() throws InterruptedException {
+        WebDriverWait wait = new WebDriverWait(driver, 10);
+        boolean switchFound = false;
+
+        while (!switchFound) {
+            try {
+                MobileElement switchElement = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//android.widget.Switch[@content-desc=\"Delete all drafts on screen lock\"]")));
+                switchFound = true;
+                if (switchDeleteDrafts.getAttribute("checked").equals("true")) {
+                    switchDeleteDrafts.click();
+                    System.out.println("Переключатель включен, отключаем");
+                }
+            } catch (Exception e) {
+                Utils.scroll(driver);
+            }
+        }
+        HeaderSection header = new HeaderSection(driver);
+        header.goBack();
+    }
+
+    public void activateDeleteMessagesByDefault() throws InterruptedException {
+        WebDriverWait wait = new WebDriverWait(driver, 10);
+        boolean switchFound = false;
+
+        while (!switchFound) {
+            try {
+                MobileElement switchElement = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//android.widget.Switch[@content-desc=\"Delete all drafts on screen lock\"]")));
+                switchFound = true;
+                if (!switchDeleteMessagesByDefault.getAttribute("checked").equals("true")) {
+                    switchDeleteMessagesByDefault.click();
+                    System.out.println("Переключатель отключен, включаем");
+                }
+            } catch (Exception e) {
+                Utils.scroll(driver);
+            }
+        }
+        HeaderSection header = new HeaderSection(driver);
+        header.goBack();
+    }
+    public void deactivateDeleteMessagesByDefault() throws InterruptedException {
+        WebDriverWait wait = new WebDriverWait(driver, 10);
+        boolean switchFound = false;
+
+        while (!switchFound) {
+            try {
+                MobileElement switchElement = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//android.widget.Switch[@content-desc=\"Delete all drafts on screen lock\"]")));
+                switchFound = true;
+                if (switchDeleteMessagesByDefault.getAttribute("checked").equals("true")) {
+                    switchDeleteMessagesByDefault.click();
+                    System.out.println("Переключатель включен, отключаем");
+                }
             } catch (Exception e) {
                 Utils.scroll(driver);
             }

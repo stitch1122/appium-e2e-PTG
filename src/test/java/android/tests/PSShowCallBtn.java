@@ -6,12 +6,12 @@ import io.appium.java_client.android.Activity;
 import io.appium.java_client.android.StartsActivity;
 import org.testng.annotations.Test;
 
-public class PSShowDeletingAfterReadBtnUser extends BaseTest{
+public class PSShowCallBtn extends BaseTest{
+    String chatUrl = Constants.CHAT_USER_URL;
     String appPackage = Constants.APP_PACKAGE;
-    String chatUrl = Constants.CHAT_USER_URL; //введите url юзера с которым есть чат
-    String message = "hi";
-    @Test(groups = "partisan_settings", description = "Show Deleting After Read Btn is disabled")
-    public void deletingMyMessagesBtnIsNotShown() throws InterruptedException {
+
+    @Test(groups = "partisan_settings", description = "Show Call Btn is disabled")
+    public void showCallBtnIsNotShown() throws InterruptedException {
         Activity activity = new Activity(appPackage, "org.telegram.ui.LaunchActivity");
         ((StartsActivity) AppDriver.getDriver()).startActivity(activity);
 
@@ -23,19 +23,17 @@ public class PSShowDeletingAfterReadBtnUser extends BaseTest{
 
         start.putPinCode();
         privacy.openPartisanSettings();
-        partisanSettings.deactivateDeletingAfterRead();
+        partisanSettings.deactivateShowCallBtn();
         start.enterPin("withPinCode");
-        searchPage.findAndOpenChat(chatUrl);
-        messages.enterMessageAndLongTap(message);
-        messages.checkDeletingAfterReadingBtnDisappear();
+        searchPage.findAndOpenChat(chatUrl); //введите url юзера
+        messages.checkCallBtnDisappear();
         start.enterPin("withFakePinCode");
-        searchPage.findAndOpenChat(chatUrl);
-        messages.enterMessageAndLongTap(message);
-        messages.checkDeletingAfterReadingBtnDisappear();
+        searchPage.findAndOpenChat(chatUrl); //введите url юзера
+        messages.checkCallBtnAppear();
     }
 
-    @Test(groups = "partisan_settings", description = "Show Deleting After Read Btn is enabled")
-    public void deletingMyMessagesBtnIsShown() throws InterruptedException {
+    @Test(groups = "partisan_settings", description = "Show Call Btn is enabled")
+    public void showCallBtnIsShown() throws InterruptedException {
         Activity activity = new Activity(appPackage, "org.telegram.ui.LaunchActivity");
         ((StartsActivity) AppDriver.getDriver()).startActivity(activity);
 
@@ -44,17 +42,14 @@ public class PSShowDeletingAfterReadBtnUser extends BaseTest{
         PartisanSettingsPage partisanSettings = new PartisanSettingsPage(driver);
         SearchPage searchPage = new SearchPage(driver);
         Messages messages = new Messages(driver);
-
         start.putPinCode();
         privacy.openPartisanSettings();
-        partisanSettings.activateDeletingAfterRead();
+        partisanSettings.activateShowCallBtn();
         start.enterPin("withPinCode");
-        searchPage.findAndOpenChat(chatUrl);
-        messages.enterMessageAndLongTap(message);
-        messages.checkDeletingAfterReadingBtnAppear();
+        searchPage.findAndOpenChat(chatUrl); //введите url юзера
+        messages.checkCallBtnAppear();
         start.enterPin("withFakePinCode");
-        searchPage.findAndOpenChat(chatUrl);
-        messages.enterMessageAndLongTap(message);
-        messages.checkDeletingAfterReadingBtnDisappear();
+        searchPage.findAndOpenChat(chatUrl); //введите url юзера
+        messages.checkCallBtnAppear();
     }
 }
