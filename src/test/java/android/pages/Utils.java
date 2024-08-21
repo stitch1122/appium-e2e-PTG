@@ -55,7 +55,8 @@ public class Utils {
         Thread.sleep(100);
     }
 
-    public static void longTap(AppiumDriver driver, WebElement element) {
+    public static void longTap(AppiumDriver driver, WebElement element) throws InterruptedException {
+        Thread.sleep(1000);
         AndroidTouchAction touch = new AndroidTouchAction (driver);
         touch.longPress(LongPressOptions.longPressOptions()
                 .withElement (ElementOption.element (element)))

@@ -75,7 +75,8 @@ Then select __clean, validate, compile, test__ options, and click on __Run Maven
 ![Build projects](img2.png)
 
 6. Run tests
-#### Constants - fill in the constants!!!!!
+#### Constants - fill in the constants!!!!! Иконка приложения должна быть на экране, если ее нет - добавьте
+(Ели приложение установлено вручную, то предоставьте ему все разрешения, и в терминале введите команду: adb root)
 *******
 ##### There are a few ways to run your tests:
 

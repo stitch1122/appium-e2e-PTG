@@ -40,10 +40,10 @@ public class StartPage extends BasePage {
     @AndroidFindBy(xpath = "//android.widget.FrameLayout[@content-desc=\"Done\"]")
     private MobileElement buttonDone;
 
-    @AndroidFindBy(id = "org.telegram.messenger.web:id/passcode_btn_1")
+    @AndroidFindBy(id = Constants.APP_PACKAGE + ":id/passcode_btn_1")
     private static MobileElement passcodeBtn;
 
-    @AndroidFindBy(id = "org.telegram.messenger.web:id/passcode_btn_2")
+    @AndroidFindBy(id = Constants.APP_PACKAGE + ":id/passcode_btn_2")
     private static MobileElement fakePasscodeBtn;
 
     public void putPhoneNumber() throws InterruptedException {
@@ -51,7 +51,7 @@ public class StartPage extends BasePage {
     }
 
     public void open(String pinCode) throws InterruptedException {
-        Activity activity = new Activity("org.telegram.messenger.web", "org.telegram.ui.LaunchActivity");
+        Activity activity = new Activity(Constants.APP_PACKAGE, "org.telegram.ui.LaunchActivity");
         ((StartsActivity) driver).startActivity(activity);
         StartPage start = new StartPage(driver);
         if(pinCode == "1111" || pinCode == "withPinCode") {
@@ -65,7 +65,7 @@ public class StartPage extends BasePage {
     }
 
     public void enterPin(String pinCode) throws InterruptedException {
-        Activity activity = new Activity("org.telegram.messenger.web", "org.telegram.ui.LaunchActivity");
+        Activity activity = new Activity(Constants.APP_PACKAGE, "org.telegram.ui.LaunchActivity");
         ((StartsActivity) driver).startActivity(activity);
         StartPage start = new StartPage(driver);
         if(pinCode == "1111" || pinCode == "withPinCode") {
