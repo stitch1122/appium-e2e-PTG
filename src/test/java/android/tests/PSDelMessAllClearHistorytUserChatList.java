@@ -20,12 +20,6 @@ public class PSDelMessAllClearHistorytUserChatList extends BaseTest{
         StartPage start = new StartPage(driver);
         PrivacyAndSecurityPage privacy = new PrivacyAndSecurityPage(driver);
         PartisanSettingsPage partisanSettings = new PartisanSettingsPage(driver);
-<<<<<<< HEAD
-=======
-        SearchPage searchPage = new SearchPage(driver);
-        Messages messages = new Messages(driver);
-        ChatListPage chatListPage = new ChatListPage(driver);
->>>>>>> origin/main
         FolderPage folderPage = new FolderPage(driver);
 
         start.putPinCode();
@@ -54,12 +48,6 @@ public class PSDelMessAllClearHistorytUserChatList extends BaseTest{
         StartPage start = new StartPage(driver);
         PrivacyAndSecurityPage privacy = new PrivacyAndSecurityPage(driver);
         PartisanSettingsPage partisanSettings = new PartisanSettingsPage(driver);
-<<<<<<< HEAD
-=======
-        SearchPage searchPage = new SearchPage(driver);
-        Messages messages = new Messages(driver);
-        ChatListPage chatListPage = new ChatListPage(driver);
->>>>>>> origin/main
         FolderPage folderPage = new FolderPage(driver);
 
         start.putPinCode();

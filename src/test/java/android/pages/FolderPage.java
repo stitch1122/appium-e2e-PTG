@@ -1,29 +1,18 @@
 package android.pages;
 
-<<<<<<< HEAD
-=======
-import com.google.common.collect.ImmutableMap;
->>>>>>> origin/main
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileBy;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.pagefactory.AndroidFindBy;
-<<<<<<< HEAD
-=======
 import io.appium.java_client.touch.WaitOptions;
->>>>>>> origin/main
 import io.appium.java_client.touch.offset.PointOption;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-<<<<<<< HEAD
-=======
 import org.testng.Assert;
->>>>>>> origin/main
-
 import java.util.List;
 public class FolderPage extends BasePage{
     public FolderPage(AppiumDriver driver) {
@@ -68,11 +57,7 @@ public class FolderPage extends BasePage{
     }
 
     public void deleteFolderForUser(String nameFolder) throws InterruptedException {
-<<<<<<< HEAD
-        WebDriverWait wait = new WebDriverWait(driver, 15);
-=======
         WebDriverWait wait = new WebDriverWait(driver, 10);
->>>>>>> origin/main
         MobileElement folder = (MobileElement) wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//android.view.View[@content-desc='" + nameFolder + "']")));
         Utils.longTap(driver,folder);
         MobileElement deleteBtn = (MobileElement) wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//android.widget.TextView[@text = 'Delete folder']")));
@@ -84,10 +69,6 @@ public class FolderPage extends BasePage{
         Thread.sleep(2000);
         TouchAction action = new TouchAction(driver);
         action.tap(PointOption.point(x,y)).perform();
-<<<<<<< HEAD
-        Thread.sleep(2000);
-=======
->>>>>>> origin/main
     }
     public void findAndSelectFolderForUser(String nameFolder) throws InterruptedException {
         WebDriverWait wait = new WebDriverWait(driver, 10);
@@ -99,11 +80,6 @@ public class FolderPage extends BasePage{
         WebDriverWait wait = new WebDriverWait(driver, 10);
         MobileElement chat = (MobileElement) wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//android.view.ViewGroup[@index = '0']")));
         Utils.longTap(driver,chat);
-<<<<<<< HEAD
-        MobileElement del = (MobileElement) wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//android.widget.ImageButton[@content-desc=\"Delete\"]")));
-        del.click();
-        Thread.sleep(1000);
-=======
         MobileElement el = (MobileElement) wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//androidx.recyclerview.widget.RecyclerView[@index = '0']")));
         int x = el.getCenter().getX();
         int x1 = x/3 * 2 + x;
@@ -113,7 +89,7 @@ public class FolderPage extends BasePage{
         TouchAction action = new TouchAction(driver);
         action.tap(PointOption.point(x1,y)).perform(); //x=1240, y =289
         Thread.sleep(2000);
->>>>>>> origin/main
+
     }
     public void checkDeletingChatAllChecked() throws InterruptedException {
         WebDriverWait wait = new WebDriverWait(driver, 10);
@@ -149,13 +125,6 @@ public class FolderPage extends BasePage{
     public void selectFirstChatAndTapMoreMenu() throws InterruptedException {
         WebDriverWait wait = new WebDriverWait(driver, 10);
         MobileElement chat = (MobileElement) wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//android.view.ViewGroup[@index = '0']")));
-<<<<<<< HEAD
-        Thread.sleep(1000);
-        Utils.longTap(driver,chat);
-        MobileElement moreMenu = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//android.widget.ImageButton[@content-desc=\"More options\"]")));
-        moreMenu.click();
-        Thread.sleep(1000);
-=======
         Utils.longTap(driver,chat);
         MobileElement el = (MobileElement) wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//androidx.recyclerview.widget.RecyclerView[@index = '0']")));
         int x = el.getCenter().getX();
@@ -166,7 +135,6 @@ public class FolderPage extends BasePage{
         TouchAction action = new TouchAction(driver);
         action.tap(PointOption.point(x1,y)).perform(); //x=1240, y =289
         Thread.sleep(2000);
->>>>>>> origin/main
     }
     public void checkClearHistoryAllChecked() throws InterruptedException {
         WebDriverWait wait = new WebDriverWait(driver, 10);

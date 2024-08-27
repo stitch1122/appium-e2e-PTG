@@ -21,11 +21,7 @@ public class PSDeleteDraftsGroup extends BaseTest{
         PartisanSettingsPage partisanSettings = new PartisanSettingsPage(driver);
         SearchPage searchPage = new SearchPage(driver);
         Messages messages = new Messages(driver);
-<<<<<<< HEAD
         CacheAndOthersPage cacheAndOthersPage = new CacheAndOthersPage(driver);
-=======
-        ChatListPage chatListPage = new ChatListPage(driver);
->>>>>>> origin/main
 
         start.putPinCode();
         privacy.openPartisanSettings();
@@ -33,22 +29,14 @@ public class PSDeleteDraftsGroup extends BaseTest{
         start.enterPin("withPinCode");
         searchPage.findAndOpenChat(chatUrl); //введите url
         messages.enterMessage(message);
-<<<<<<< HEAD
         cacheAndOthersPage.blockAndUnlockScreen();
-=======
-        chatListPage.blockAndUnlockScreen();
->>>>>>> origin/main
         start.enterPin("withPinCode");
         searchPage.findAndOpenChat(chatUrl);
         messages.checkDraftDisappear(message);
         start.enterPin("withFakePinCode");
         searchPage.findAndOpenChat(chatUrl); //введите url
         messages.enterMessage(message);
-<<<<<<< HEAD
         cacheAndOthersPage.blockAndUnlockScreen();
-=======
-        chatListPage.blockAndUnlockScreen();
->>>>>>> origin/main
         start.enterPin("withFakePinCode");
         searchPage.findAndOpenChat(chatUrl); //введите url
         messages.checkDraftAppear(message);
@@ -66,23 +54,14 @@ public class PSDeleteDraftsGroup extends BaseTest{
         PartisanSettingsPage partisanSettings = new PartisanSettingsPage(driver);
         SearchPage searchPage = new SearchPage(driver);
         Messages messages = new Messages(driver);
-<<<<<<< HEAD
         CacheAndOthersPage cacheAndOthersPage = new CacheAndOthersPage(driver);
-=======
-        ChatListPage chatListPage = new ChatListPage(driver);
->>>>>>> origin/main
-
         start.putPinCode();
         privacy.openPartisanSettings();
         partisanSettings.deactivateDeleteDrafts();
         start.enterPin("withPinCode");
         searchPage.findAndOpenChat(chatUrl); //введите url
         messages.enterMessage(message);
-<<<<<<< HEAD
         cacheAndOthersPage.blockAndUnlockScreen();
-=======
-        chatListPage.blockAndUnlockScreen();
->>>>>>> origin/main
         start.enterPin("withPinCode");
         searchPage.findAndOpenChat(chatUrl);
         messages.checkDraftAppear(message);
@@ -91,11 +70,7 @@ public class PSDeleteDraftsGroup extends BaseTest{
         start.enterPin("withFakePinCode");
         searchPage.findAndOpenChat(chatUrl); //введите url
         messages.enterMessage(message);
-<<<<<<< HEAD
         cacheAndOthersPage.blockAndUnlockScreen();
-=======
-        chatListPage.blockAndUnlockScreen();
->>>>>>> origin/main
         start.enterPin("withFakePinCode");
         searchPage.findAndOpenChat(chatUrl); //введите url
         messages.checkDraftAppear(message);

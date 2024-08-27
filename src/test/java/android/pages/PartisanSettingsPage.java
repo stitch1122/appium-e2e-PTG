@@ -105,24 +105,13 @@ public class PartisanSettingsPage extends BasePage {
 //        HeaderSection header = new HeaderSection(driver);
 //        header.goBack();
 //    }
-    public void deactivateShowAvatar() {
+    public void deactivateShowAvatar() throws InterruptedException {
         try {
             if (switchAvatarDisabling.getAttribute("checked").equals("true")) {
                 switchAvatarDisabling.click();
                 System.out.println("Переключатель включен, отключаем");
                 WebDriverWait wait = new WebDriverWait(driver, 15);
-                MobileElement resetAvatar = (MobileElement) wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//android.widget.TextView[@text='Reset' and @index = '2']"))); //"//android.widget.TextView[@text='Reset']"
 //                resetAvatar.click();
-                int x = resetAvatar.getCenter().getX();
-                int y = resetAvatar.getCenter().getY();
-                Thread.sleep(2000);
-                TouchAction action = new TouchAction(driver);
-                action.tap(PointOption.point(x,y)).perform();
-                Thread.sleep(2000);
-<<<<<<< HEAD
-=======
-
-                WebDriverWait wait = new WebDriverWait(driver, 10);
                 MobileElement resetAvatar = (MobileElement) wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//android.widget.TextView[@text='Reset' and @index = '2']")));
                 int x = resetAvatar.getCenter().getX();
                 int y = resetAvatar.getCenter().getY();
@@ -130,7 +119,6 @@ public class PartisanSettingsPage extends BasePage {
                 TouchAction action = new TouchAction(driver);
                 action.tap(PointOption.point(x,y)).perform();
                 Thread.sleep(2000);
->>>>>>> origin/main
             }
         } catch (NoSuchElementException e) {
             System.out.println("Элемент 'Reset' не найден: " + e.getMessage());
@@ -422,7 +410,6 @@ public class PartisanSettingsPage extends BasePage {
         header.goBack();
     }
 
-<<<<<<< HEAD
     public void selectHideAndClearCacheActionOnScreenLock() throws InterruptedException {
         WebDriverWait wait = new WebDriverWait(driver, 10);
         boolean elFound = false;
@@ -546,6 +533,4 @@ public class PartisanSettingsPage extends BasePage {
     }
 
 
-=======
->>>>>>> origin/main
 }
