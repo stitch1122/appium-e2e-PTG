@@ -1,22 +1,35 @@
 package android.pages;
 
+<<<<<<< HEAD
+=======
+import com.google.common.collect.ImmutableMap;
+>>>>>>> origin/main
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileBy;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
+<<<<<<< HEAD
+=======
+import org.openqa.selenium.TimeoutException;
+>>>>>>> origin/main
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
+<<<<<<< HEAD
 import java.io.*;
+=======
+import java.util.List;
+>>>>>>> origin/main
 
 public class ChatListPage extends BasePage {
     public ChatListPage(AppiumDriver driver) {
         this.driver = driver;
     }
 
+<<<<<<< HEAD
     public void checkAppRunning() {
         try {
             // Выполнение команды adb для получения списка активных задач
@@ -122,6 +135,28 @@ public class ChatListPage extends BasePage {
                 MobileElement chatK = (MobileElement) driver.findElement(By.xpath("*[contains(@text, 'W')]"));
                 chatK.click();
                 System.out.println("Чат 'W' найден и открыт.");
+=======
+    public void blockAndUnlockScreen() throws Exception {
+        // Блокировка экрана
+        Runtime.getRuntime().exec("adb shell input keyevent 26");
+        Thread.sleep(2000);
+        System.out.println("Экран заблокирован");
+
+        // Разблокировка экрана
+        Runtime.getRuntime().exec("adb shell input keyevent 82");
+        Thread.sleep(2000);
+        System.out.println("Экран разблокирован");
+    }
+    public void findChatByName(){
+        WebDriverWait wait = new WebDriverWait(driver, 10);
+//        MobileElement chat = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(".//*[starts-with(@text,'Wadf')]")));
+//        MobileElement el = (MobileElement) driver.findElement(MobileBy.AndroidUIAutomator("new UiSelector().text(\"Wadf\")"));
+        while (true) {
+            try {
+                MobileElement chatK = (MobileElement) driver.findElement(By.xpath("*[contains(@text, 'wadf')]"));
+                chatK.click();
+                System.out.println("Чат 'Wadf' найден и открыт.");
+>>>>>>> origin/main
                 break;
             } catch (NoSuchElementException e) {
                 // Прокрутка вниз

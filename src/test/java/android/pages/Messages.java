@@ -44,13 +44,21 @@ public class Messages extends BasePage{
 
 
     public void findMessageAndTap(String message) throws InterruptedException {
+<<<<<<< HEAD
         WebDriverWait wait = new WebDriverWait(driver, 15);
+=======
+        WebDriverWait wait = new WebDriverWait(driver, 10);
+>>>>>>> origin/main
         MobileElement messageFind = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(".//*[starts-with(@text,'" + message + "')]")));
         messageFind.click();
         Thread.sleep(2000);
     }
     public void findMessageAndDelete(String message) throws InterruptedException {
+<<<<<<< HEAD
         WebDriverWait wait = new WebDriverWait(driver, 15);
+=======
+        WebDriverWait wait = new WebDriverWait(driver, 10);
+>>>>>>> origin/main
         MobileElement messageSend = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(".//*[starts-with(@text,'" + message + "')]")));
         Utils.longTap(driver,messageSend);
         MobileElement deleteBtn = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//android.widget.ImageButton[@content-desc=\"Delete\"]")));
@@ -104,16 +112,28 @@ public class Messages extends BasePage{
     }
 
     public void checkCallBtnDisappear() throws InterruptedException {
+<<<<<<< HEAD
         List<MobileElement> element = driver.findElements(By.xpath("//android.widget.ImageButton[@content-desc=\"Call\"]"));
         Thread.sleep(2000);
         Assert.assertTrue(element.isEmpty());
+=======
+        List<MobileElement> elementDel = driver.findElements(By.xpath("//android.widget.ImageButton[@content-desc=\"Call\"]"));
+        Thread.sleep(2000);
+        Assert.assertTrue(elementDel.isEmpty());
+>>>>>>> origin/main
         System.out.println("Кнопка 'Звонок' не отображается - ОК");
         driver.navigate().back();
     }
     public void checkCallBtnAppear() throws InterruptedException {
+<<<<<<< HEAD
         boolean element = driver.findElements(By.xpath("//android.widget.ImageButton[@content-desc=\"Call\"]")).size() > 0;
         Thread.sleep(2000);
         Assert.assertTrue(element);
+=======
+        boolean elementDel = driver.findElements(By.xpath("//android.widget.ImageButton[@content-desc=\"Call\"]")).size() > 0;
+        Thread.sleep(2000);
+        Assert.assertTrue(elementDel);
+>>>>>>> origin/main
         System.out.println("Кнопка 'Звонок' отображается - ОК");
         driver.navigate().back();
     }
